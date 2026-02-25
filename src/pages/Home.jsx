@@ -1,19 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useFetchCrypto } from '../hooks/useFetchCrypto';
 import MarketChart from '../components/MarketChart';
 import { useCrypto } from '../context/CryptoContext';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const Home = () => {
-    // 1. Data Fetching via Custom Hook
     const { loading, error } = useFetchCrypto();
-    
-    // 2. Global State via Context API
     const { coins, currency } = useCrypto();
     
-    // 3. Controlled Forms
-    const [searchTerm, setSearchTerm] = useState('');
+    // USING OUR NEW CUSTOM HOOK HERE instead of useState
+    const [searchTerm, setSearchTerm] = useLocalStorage('cryptoSearchQuery', '');
     
-    // 4. Search Interaction (useRef)
     const searchInputRef = useRef(null);
 
     useEffect(() => {
@@ -27,7 +24,6 @@ const Home = () => {
         coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Loading State UI
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen bg-gradient-to-b from-blue-950 to-black text-white">
@@ -70,8 +66,7 @@ const Home = () => {
                             <div className="text-right">
                                 <p className="font-bold text-lg tracking-wide">{currencySymbol}{coin.current_price.toLocaleString()}</p>
                                 
-                                {/* --- STATE-BASED STYLING --- */}
-                                {/* Green text if >= 0, Red text if < 0 */}
+                                {/* STATE-BASED STYLING */}
                                 <p className={`text-sm font-bold tracking-wider mt-1 ${coin.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                                     {coin.price_change_percentage_24h >= 0 ? '▲ ' : '▼ '}
                                     {Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
