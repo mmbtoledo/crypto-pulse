@@ -10,10 +10,10 @@ export const useFetchCrypto = () => {
         const fetchMarket = async () => {
             setLoading(true);
             try {
-                // Now uses the dynamic currency from your dropdown
+                // Injects the current currency (usd, eur, php) into the CoinGecko API URL
                 const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.toLowerCase()}&order=market_cap_desc&per_page=10&page=1`);
                 
-                if (!res.ok) throw new Error("The Market is closed (API Error)");
+                if (!res.ok) throw new Error("API Connection Intercepted.");
                 const data = await res.json();
                 setCoins(data);
             } catch (err) {
@@ -24,7 +24,7 @@ export const useFetchCrypto = () => {
         };
         fetchMarket();
         
-    }, [setCoins, currency]); // Refetches when currency changes
+    }, [setCoins, currency]); // Refetches immediately when currency changes
 
     return { loading, error };
 };
