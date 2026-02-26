@@ -1,6 +1,5 @@
 import { useRef, useEffect } from 'react';
 import { useFetchCrypto } from '../hooks/useFetchCrypto';
-import MarketChart from '../components/MarketChart';
 import { useCrypto } from '../context/CryptoContext';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
@@ -8,9 +7,7 @@ const Home = () => {
     const { loading, error } = useFetchCrypto();
     const { coins, currency } = useCrypto();
     
-    // Supplementary Activity: LocalStorage Hook
     const [searchTerm, setSearchTerm] = useLocalStorage('cryptoSearchQuery', '');
-    
     const searchInputRef = useRef(null);
 
     useEffect(() => {
@@ -55,7 +52,7 @@ const Home = () => {
                     <div className="absolute top-0 right-0 h-full w-2 bg-cyan-500/50"></div>
                 </div>
 
-                <MarketChart />
+                {/* The Chart has been moved from here to Analysis.jsx! */}
 
                 <div className="mt-8 grid gap-4">
                     {filteredCoins.map(coin => (
