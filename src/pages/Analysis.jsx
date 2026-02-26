@@ -1,6 +1,23 @@
 import MarketChart from '../components/MarketChart';
+import { useFetchCrypto } from '../hooks/useFetchCrypto';
 
 const Analysis = () => {
+    // 1. Call the hook here so it listens for currency changes on this page!
+    const { loading, error } = useFetchCrypto();
+
+    // 2. Add the digital loading state while it fetches the new currency prices
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen bg-slate-950 text-cyan-400 font-mono text-xl tracking-widest">
+                <span className="animate-pulse drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]">FETCHING NEW MARKET DATA...</span>
+            </div>
+        );
+    }
+
+    if (error) {
+        return <div className="text-rose-500 font-mono text-center mt-10 font-bold bg-slate-950 h-screen pt-10 uppercase tracking-widest">System Error: {error}</div>;
+    }
+
     return (
         <div className="p-6 min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-cyan-500/30">
             <div className="max-w-4xl mx-auto mt-8">
@@ -15,7 +32,7 @@ const Analysis = () => {
                     </p>
                 </div>
                 
-                {/* Rendering the Chart Component here! */}
+                {/* Rendering the Chart Component */}
                 <MarketChart />
                 
             </div>
