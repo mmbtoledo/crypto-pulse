@@ -4,7 +4,6 @@ import { useCrypto } from '../context/CryptoContext';
 const MarketChart = () => {
     const { coins, currency } = useCrypto();
     
-    // Transform raw JSON into Chart-friendly data
     const chartData = coins.map(coin => ({
         name: coin.symbol.toUpperCase(),
         price: coin.current_price
@@ -21,7 +20,6 @@ const MarketChart = () => {
                         contentStyle={{backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '8px'}} 
                         itemStyle={{color: '#22d3ee', fontWeight: 'bold'}}
                     />
-                    {/* Refactored from Bar to Line for financial look */}
                     <Line 
                         type="monotone" 
                         dataKey="price" 

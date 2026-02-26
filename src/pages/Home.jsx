@@ -8,7 +8,7 @@ const Home = () => {
     const { loading, error } = useFetchCrypto();
     const { coins, currency } = useCrypto();
     
-    // USING OUR NEW CUSTOM HOOK HERE instead of useState
+    // Using the Custom Hook for local storage
     const [searchTerm, setSearchTerm] = useLocalStorage('cryptoSearchQuery', '');
     
     const searchInputRef = useRef(null);
