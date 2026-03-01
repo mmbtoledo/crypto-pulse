@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import { CryptoProvider, useCrypto } from './context/CryptoContext';
+import { CryptoProvider } from './context/CryptoProvider';
+import { useCrypto } from './hooks/useCrypto';
 import Home from './pages/Home';
 import Analysis from './pages/Analysis';
 
