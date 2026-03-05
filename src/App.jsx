@@ -7,7 +7,7 @@ const Navbar = () => {
     const { currency, setCurrency } = useCrypto();
 
     return (
-        <nav className="p-4 bg-slate-950 border-b border-cyan-500/30 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 relative overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+        <nav className="sticky top-0 z-50 w-full p-4 bg-slate-950 border-b border-cyan-500/30 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
             {/* Glowing top line */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-cyan-600 via-cyan-400 to-emerald-400"></div>
             

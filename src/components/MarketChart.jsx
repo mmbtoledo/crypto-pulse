@@ -19,26 +19,26 @@ const MarketChart = () => {
     }
 
     return (
-        <div className="h-[28rem] w-full p-6 bg-slate-900 rounded-lg mt-6 border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.15)] relative overflow-hidden flex flex-col">
+        <div className="h-[28rem] w-full p-4 sm:p-6 bg-slate-900 rounded-lg mt-6 border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.15)] relative overflow-hidden flex flex-col">
             {/* Digital grid background effect */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
             
-            <div className="flex justify-between items-center mb-6 z-10 relative">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 z-10 relative">
                 <h2 className="text-cyan-400 font-bold tracking-widest uppercase text-sm drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">
                     MARKET TRAJECTORY ({currency})
                 </h2>
                 
                 {/* --- THE TOGGLE BUTTONS --- */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 w-full sm:w-auto">
                     <button 
                         onClick={() => setChartType('line')}
-                        className={`px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest transition-colors border ${chartType === 'line' ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.4)]' : 'bg-slate-800 text-slate-500 border-slate-700 hover:text-cyan-400 hover:border-cyan-700'}`}
+                        className={`flex-1 sm:flex-none px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest transition-colors border ${chartType === 'line' ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.4)]' : 'bg-slate-800 text-slate-500 border-slate-700 hover:text-cyan-400 hover:border-cyan-700'}`}
                     >
                         Line
                     </button>
                     <button 
                         onClick={() => setChartType('bar')}
-                        className={`px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest transition-colors border ${chartType === 'bar' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.4)]' : 'bg-slate-800 text-slate-500 border-slate-700 hover:text-emerald-400 hover:border-emerald-700'}`}
+                        className={`flex-1 sm:flex-none px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest transition-colors border ${chartType === 'bar' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.4)]' : 'bg-slate-800 text-slate-500 border-slate-700 hover:text-emerald-400 hover:border-emerald-700'}`}
                     >
                         Bar
                     </button>
@@ -46,7 +46,7 @@ const MarketChart = () => {
             </div>
             
             <div className="flex-grow z-10 relative">
-                <ResponsiveContainer>
+                <ResponsiveContainer width="100%" height="100%">
                     {/* Conditionally render the chosen chart */}
                     {chartType === 'line' ? (
                         <LineChart data={chartData}>
