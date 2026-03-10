@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useCrypto } from '../context/CryptoContext';
+import { useCrypto } from './useCrypto';
 
 // 1. The "Memory Bank" sits outside the hook so it survives page changes
 const apiCache = {};

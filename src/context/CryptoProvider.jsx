@@ -1,6 +1,5 @@
-import { createContext, useState, useContext } from 'react';
-
-const CryptoContext = createContext();
+import { useState } from 'react';
+import { CryptoContext } from './CryptoContext';
 
 export const CryptoProvider = ({ children }) => {
     const [coins, setCoins] = useState([]);
@@ -12,5 +11,3 @@ export const CryptoProvider = ({ children }) => {
         </CryptoContext.Provider>
     );
 };
-
-export const useCrypto = () => useContext(CryptoContext);

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useFetchCrypto } from '../hooks/useFetchCrypto';
-import { useCrypto } from '../context/CryptoContext';
+import { useCrypto } from '../hooks/useCrypto';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const Home = () => {

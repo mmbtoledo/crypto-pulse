@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { useCrypto } from '../context/CryptoContext';
+import { useCrypto } from '../hooks/useCrypto';
 
 const MarketChart = () => {
     const { coins, currency } = useCrypto();
